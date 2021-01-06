@@ -8,5 +8,4 @@ dotenv.config()
 // Initialize the Client using the IoC.
 const client = container.resolve(Client)
 
-// eslint-disable-next-line
-client.login(process.env.token).then(() => console.log("tokenbot happily hodling along")).catch(e => console.error(e))
+client.login(process.env.token).then(() => console.log('tokenbot happily hodling along')).catch(e => console.error(e))

@@ -1,33 +1,30 @@
-import { Collection, Client as DiscordClient } from 'discord.js';
-import { Service } from 'typedi';
-import { Logger } from './utils/Logger';
-import { BotSettings, BotClient } from './types';
-import { Command } from './Command';
-import { ActionManager } from './managers/ActionManager';
-import { settings as configuration } from './config/config';
+import { Client as DiscordClient, Collection } from 'discord.js'
+import { injectable } from 'tsyringe'
+import { Command } from './Command'
+import { settings as configuration } from './config/config'
+import { ActionManager } from './managers/ActionManager'
+import { BotClient, BotSettings } from './types'
 
-@Service()
+@injectable()
 export class Client extends DiscordClient implements BotClient {
-    public settings: BotSettings;
+  public settings: BotSettings
 
-    constructor(private actionManager: ActionManager) {
-        super(configuration.clientOptions || {});
-        this.settings = configuration;
-        this.settings.token = process.env.BOT_TOKEN;
-        this.initialize();
-    }
+  constructor (private readonly actionManager: ActionManager) {
+    super(configuration.clientOptions ?? {})
+    this.settings = configuration
+    this.initialize()
+  }
 
-    private async initialize(): Promise<void> {
-        try {
-            await this.login(configuration.token);
-            this.actionManager.initializeCommands(this);
-            this.actionManager.initializeEvents(this);
-        } catch (e) {
-            Logger.error(`Could not initialize bot: ${e}`);
-        }
+  private initialize (): void {
+    try {
+      this.actionManager.initializeCommands(this)
+      this.actionManager.initializeEvents(this)
+    } catch (e) {
+      console.error(`Could not initialize bot: ${e as string}`)
     }
+  }
 
-    public get commands(): Collection<string, Command> {
-        return this.actionManager.commands;
-    }
+  public get commands (): Collection<string, Command> {
+    return this.actionManager.commands
+  }
 }

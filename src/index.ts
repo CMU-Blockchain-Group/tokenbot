@@ -1,9 +1,12 @@
-import 'reflect-metadata';
-import * as dotenv from 'dotenv';
-import { Container } from 'typedi';
-import { Client } from './Client';
+import * as dotenv from 'dotenv'
+import 'reflect-metadata'
+import { container } from 'tsyringe'
+import { Client } from './Client'
 
-dotenv.config();
+dotenv.config()
 
 // Initialize the Client using the IoC.
-Container.get<Client>(Client);
+const client = container.resolve(Client)
+
+// eslint-disable-next-line
+client.login(process.env.token).then(() => console.log("tokenbot happily hodling along")).catch(e => console.error(e))

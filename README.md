@@ -8,9 +8,7 @@ This section contains information about where to define new functionality for yo
 
 ### Events
 
-Trigger actions on a new event by adding a new file that has the same name as a specific **event name** defined in the event section of the [documentation](https://discord.js.org/#/docs/main/stable/class/Client).
-
-To properly initialize the event, this file has to be added to the event directory you specified in the configuration file of the bot: `config.ts`.
+Trigger actions on a new event by adding a new file that has the same name as a specific **event name** defined in the event section of the [documentation](https://discord.js.org/#/docs/main/stable/class/Client). That **event name** should be returned from the Event's `name` method
 
 *Example of Event: **Ready***
 
@@ -37,8 +35,6 @@ export default class Ready implements BotEvent {
 ### Commands
 
 Execute commands when a specific keyword including the command prefix has been sent in a Discord channel.
-
-To properly initialize the command, this file has to be added to the command directory you specified in the configuration file of the bot: `config.ts`.
 
 *Example of Command: **Ping***
 

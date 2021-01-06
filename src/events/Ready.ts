@@ -1,14 +1,14 @@
-import { Client } from '../Client';
-import { Logger } from '../utils/Logger';
-import { BotEvent } from '../types';
+import { BotClient, BotEvent } from '../types'
 
 export default class Ready implements BotEvent {
-    constructor(private client: Client) {}
+  constructor (private readonly client: BotClient) { }
 
-    public async run(): Promise<void> {
-        if (this.client.user) {
-            Logger.info(`${this.client.user.username} is running.`);
-            this.client.user.setPresence(this.client.settings.presence);
-        }
+  name (): string { return 'Ready' }
+
+  public async run (): Promise<void> {
+    if (this.client.user !== null) {
+      console.log(`${this.client.user.username} is running.`)
+      await this.client.user.setPresence(this.client.settings.presence)
     }
+  }
 }

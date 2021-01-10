@@ -1,8 +1,11 @@
 import { Message } from 'discord.js'
 import { Command } from '../Command'
-import { BotClient } from '../types'
+import { BotClient, NearProvider } from '../types'
 
 export default class Ping extends Command {
+  // * Ping prolly doesn't need NearProvider, but this is how you'd get access to it from within an event
+  private readonly getNearProvider: () => Promise<NearProvider>
+
   constructor (client: BotClient) {
     super(client, {
       name: 'ping',
@@ -12,6 +15,7 @@ export default class Ping extends Command {
       cooldown: 1000,
       requiredPermissions: ['SEND_MESSAGES']
     })
+    this.getNearProvider = client.getNearProvider
   }
 
   public async run (message: Message): Promise<void> {

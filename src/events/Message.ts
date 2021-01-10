@@ -22,7 +22,7 @@ export default class Message implements BotEvent {
     const command = argus.shift()!.slice(this.client.settings.prefix.length)
     const cmd = this.client.commands.get(command)
 
-    if (cmd === undefined || !cmd.canRun(message.author, message)) return
+    if (cmd === undefined || !(await cmd.canRun(message.author, message))) return
     await cmd.run(message, argus)
 
     if (message.guild !== null) cmd.setCooldown(message.author, message.guild)

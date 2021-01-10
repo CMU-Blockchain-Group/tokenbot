@@ -1,9 +1,15 @@
 import { Client, ClientOptions, Collection, DMChannel, Guild, MessageEmbed, NewsChannel, PermissionString, PresenceData, TextChannel, User } from 'discord.js'
+import { Near, WalletConnection } from 'near-api-js'
 import { Command } from '../../Command'
 
+export interface NearProvider {
+  wallet: WalletConnection
+  near: Near
+}
 export interface BotClient extends Client {
   settings: BotSettings
   commands: Collection<string, Command>
+  getNearProvider: () => Promise<NearProvider>
 }
 
 export interface CommandOptions {

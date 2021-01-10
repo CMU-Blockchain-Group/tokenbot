@@ -1,10 +1,11 @@
 import { Collection } from 'discord.js'
-import { injectable } from 'tsyringe'
+import { Service } from 'typedi'
 import { Command } from '../Command'
 import commandClasses from '../commands'
 import eventClasses from '../events'
 import { BotClient } from '../types/bot/bot'
-@injectable()
+
+@Service()
 export class ActionManager {
   public commands: Collection<string, Command> = new Collection<
   string,

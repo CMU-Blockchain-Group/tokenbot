@@ -4,7 +4,7 @@ Get started with a new Discord bot using `discord.js` fast, modified for stronge
 
 ## Usage
 
-This section contains information about where to define new functionality for your Discord bot.
+This section contains information about where to define new functionality for your Discord bot. For more information about discordjs and making bots in general, check out the [discordjs guide](https://discordjs.guide/)
 
 ### Events
 

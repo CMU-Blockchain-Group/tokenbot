@@ -4,7 +4,8 @@
   "description": "A TypeScript Discord bot for social, crypto-native communites",
   "main": "src/index.ts",
   "scripts": {
-    "start": "npx prettier --write . && tsc && node dist/index.js"
+    "start": "tsc && pm2 start dist/index.js",
+    "dev": "prettier --write . && tsc &&  node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "near-api-js": "^0.36.2",
+    "pm2": "^4.5.1",
     "prettier": "^2.2.1",
     "reflect-metadata": "^0.1.13",
     "typedi": "^0.9.0",

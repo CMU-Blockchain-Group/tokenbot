@@ -1,2 +1,3 @@
 import Ping from "./Ping";
-export default [Ping];
+import Pong from "./Pong";
+export default [Ping, Pong];

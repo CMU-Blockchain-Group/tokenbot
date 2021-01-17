@@ -14,7 +14,7 @@ export class Client extends DiscordClient implements BotClient {
   private nearProvider: NearProvider | null
   private readonly nearConfig: any
 
-  constructor(private readonly actionManager: ActionManager) {
+  constructor (private readonly actionManager: ActionManager) {
     super(configuration.clientOptions ?? {})
     this.settings = configuration
     this.nearProvider = null
@@ -22,7 +22,7 @@ export class Client extends DiscordClient implements BotClient {
     this.initialize()
   }
 
-  public async getNearProvider(): Promise<NearProvider> {
+  public async getNearProvider (): Promise<NearProvider> {
     if (this.nearProvider === null) {
       const near = await connect({
         deps: {
@@ -39,7 +39,7 @@ export class Client extends DiscordClient implements BotClient {
     return this.nearProvider
   }
 
-  private initialize(): void {
+  private initialize (): void {
     try {
       this.actionManager.initializeCommands(this)
       this.actionManager.initializeEvents(this)
@@ -48,7 +48,7 @@ export class Client extends DiscordClient implements BotClient {
     }
   }
 
-  public get commands(): Collection<string, Command> {
+  public get commands (): Collection<string, Command> {
     return this.actionManager.commands
   }
 }

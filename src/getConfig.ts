@@ -2,18 +2,16 @@
 // const CONTRACT_NAME = process.env.CONTRACT_NAME ?? 'default'
 
 export default function getConfig (env: string): any {
+  const keyPath = process.env.KEY_PATH ?? '.'
   switch (env) {
     // when running on server, use a
     case 'development':
     case 'production':
     case 'testnet':
-      if (process.env.KEY_PATH === undefined) {
-        throw new Error('HOME env variable not set!')
-      }
       return {
         networkId: 'local',
         nodeUrl: 'http://localhost:3030',
-        keyPath: process.env.KEY_PATH
+        keyPath: keyPath
         // contractName: CONTRACT_NAME
       }
     default:

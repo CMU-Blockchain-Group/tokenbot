@@ -18,14 +18,12 @@ export class Client extends DiscordClient implements BotClient {
     super(configuration.clientOptions ?? {})
     this.settings = configuration
     this.nearProvider = null
-    this.nearConfig = getConfig(process.env.NODE_ENV ?? 'development')
+    this.nearConfig = getConfig(process.env.NODE_ENV ?? 'local')
     this.initialize()
   }
 
   public async getNearProvider (): Promise<NearProvider> {
-    if (this.nearProvider !== null) {
-      return this.nearProvider
-    } else {
+    if (this.nearProvider === null) {
       const near = await connect({
         deps: {
           keyStore: new InMemoryKeyStore()
@@ -37,8 +35,8 @@ export class Client extends DiscordClient implements BotClient {
         near: near,
         wallet: wallet
       }
-      return this.nearProvider
     }
+    return this.nearProvider
   }
 
   private initialize (): void {

@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "tsc && pm2 start --name tokenbot dist/index.js",
-    "dev": "prettier --write . && pm2 install typescript && pm2 start --name tokenbot-dev src/index.ts --watch"
+    "dev": "prettier --write . && pm2 install typescript && pm2 start --name tokenbot-dev --no-daemon  src/index.ts --watch"
   },
   "repository": {
     "type": "git",

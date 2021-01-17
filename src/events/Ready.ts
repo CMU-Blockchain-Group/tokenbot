@@ -7,12 +7,12 @@ export default class Ready implements BotEvent {
   }
 
   name(): string {
-    return "Ready";
+    return "ready";
   }
 
   public async run(): Promise<void> {
     if (this.client.user !== null) {
-      console.log(`${this.client.user.username} is running.`);
+      console.log(`${this.client.user.username} is ready!`);
       await this.client.user.setPresence(this.client.settings.presence);
     }
   }

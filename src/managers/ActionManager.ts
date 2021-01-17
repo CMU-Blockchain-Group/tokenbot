@@ -3,7 +3,7 @@ import { Service } from "typedi";
 import { Command } from "../Command";
 import commandClasses from "../commands";
 import eventClasses from "../events";
-import { BotClient } from "../types/bot";
+import { BotClient } from "../types";
 
 @Service()
 export class ActionManager {

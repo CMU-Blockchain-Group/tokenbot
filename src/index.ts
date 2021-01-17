@@ -6,9 +6,11 @@ import { Client } from "./Client";
 dotenv.config();
 
 // Initialize the Client using the IoC.
-const client = Container.get(Client);
+const client = Container.get<Client>(Client);
 
 client
   .login(process.env.DISCORD_TOKEN)
-  .then(() => console.log("tokenbot happily hodling along"))
+  .then(() => {
+    console.log("tokenbot happily hodling along");
+  })
   .catch((e) => console.error(e));

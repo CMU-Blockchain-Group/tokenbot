@@ -1,6 +1,7 @@
 import { Client as DiscordClient, Collection } from "discord.js";
 import { connect, WalletConnection } from "near-api-js";
 import { InMemoryKeyStore } from "near-api-js/lib/key_stores";
+import "reflect-metadata";
 import { Service } from "typedi";
 import { Command } from "./Command";
 import { settings as configuration } from "./config/config";

@@ -1,6 +1,18 @@
-import { Client, ClientOptions, Collection, DMChannel, Guild, MessageEmbed, NewsChannel, PermissionString, PresenceData, TextChannel, User } from "discord.js";
+import {
+  Client,
+  ClientOptions,
+  Collection,
+  DMChannel,
+  Guild,
+  MessageEmbed,
+  NewsChannel,
+  PermissionString,
+  PresenceData,
+  TextChannel,
+  User,
+} from "discord.js";
 import { Near, WalletConnection } from "near-api-js";
-import { Command } from "../Command";
+import { Command } from "./Command";
 
 export interface NearProvider {
   wallet: WalletConnection;

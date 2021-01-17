@@ -6,7 +6,7 @@ export default class Message implements BotEvent {
   constructor(private readonly client: BotClient) {}
 
   name(): string {
-    return "Message";
+    return "message";
   }
 
   public async run(args?: any): Promise<void> {

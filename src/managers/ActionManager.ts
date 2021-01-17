@@ -3,7 +3,7 @@ import { Service } from "typedi";
 import { Command } from "../Command";
 import commandClasses from "../commands";
 import eventClasses from "../events";
-import { BotClient } from "../types/bot";
+import { BotClient } from "../types";
 
 @Service()
 export class ActionManager {
@@ -20,6 +20,7 @@ export class ActionManager {
   public initializeCommands(client: BotClient): void {
     commandClasses.forEach((C) => {
       const command = new C(client);
+      console.log(command.conf.name);
       this.commands.set(command.conf.name, command);
     });
   }
@@ -32,14 +33,12 @@ export class ActionManager {
     eventClasses.forEach((C) => {
       const event = new C(client);
       const eventName = event.name();
-
-      client.on(
-        eventName,
+      console.log(eventName);
+      client.on(eventName, (args?: any) => {
+        console.log(`got a event of type ${eventName}!`);
         // eslint-disable-next-line
-        async (...args: string[]) => {
-          await event.run(...args);
-        }
-      );
+        event.run(args);
+      });
     });
   }
 }

@@ -1,7 +1,7 @@
 // TODO: eventually add a contract?
 // const CONTRACT_NAME = process.env.CONTRACT_NAME ?? 'default'
 
-export default function getConfig(env: string): any {
+export default function getConfig (env: string): any {
   switch (env) {
     // when running on server, use a
     case 'development':

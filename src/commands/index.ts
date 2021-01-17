@@ -1,4 +1,2 @@
-import Ping from './Ping'
-export default [
-  Ping
-]
+import Ping from "./Ping";
+export default [Ping];

@@ -10,7 +10,8 @@ export default function getConfig(env: string): any {
     case "testnet":
       return {
         networkId: "local",
-        nodeUrl: "http://localhost:3030",
+        nodeUrl: "https://rpc.testnet.near.org",
+        // nodeUrl: "http://localhost:3030",
         keyPath: keyPath,
         // contractName: CONTRACT_NAME
       };

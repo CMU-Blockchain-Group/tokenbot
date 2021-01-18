@@ -1,2 +1,3 @@
 import Ping from "./Ping";
-export default [Ping];
+import SendMoney from "./SendMoney";
+export default [Ping, SendMoney];

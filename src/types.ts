@@ -11,11 +11,11 @@ import {
   TextChannel,
   User,
 } from "discord.js";
-import { Near, WalletConnection } from "near-api-js";
+import { Near, WalletConnection, Account as NearAccount } from "near-api-js";
 import { Command } from "./Command";
 
 export interface NearProvider {
-  wallet: WalletConnection;
+  account: NearAccount;
   near: Near;
 }
 export interface BotClient extends Client {

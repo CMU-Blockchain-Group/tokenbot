@@ -15,8 +15,9 @@ import { Near, WalletConnection } from "near-api-js";
 import { Command } from "./Command";
 
 export interface NearProvider {
-  wallet: WalletConnection;
+  wallet: WalletConnection | any;
   near: Near;
+  config: any;
 }
 export interface BotClient extends Client {
   settings: BotSettings;

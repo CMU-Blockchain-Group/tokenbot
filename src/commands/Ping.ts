@@ -1,6 +1,15 @@
 import { Message } from "discord.js";
 import { Command } from "../Command";
 import { BotClient, NearProvider } from "../types";
+import {
+  connect,
+  WalletConnection,
+  KeyPair,
+  keyStores,
+  utils,
+} from "near-api-js";
+import { InMemoryKeyStore } from "near-api-js/lib/key_stores";
+import BN from "bn.js";
 
 export default class Ping extends Command {
   // * Ping prolly doesn't need NearProvider, but this is how you'd get access to it from within an event

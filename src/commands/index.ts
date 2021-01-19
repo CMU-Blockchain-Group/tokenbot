@@ -1,2 +1,3 @@
 import Ping from "./Ping";
-export default [Ping];
+import TSend from "./TSend";
+export default [Ping,TSend];

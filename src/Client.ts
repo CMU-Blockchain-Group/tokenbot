@@ -1,5 +1,5 @@
 import { Client as DiscordClient, Collection } from "discord.js";
-import { connect, WalletConnection } from "near-api-js";
+import { connect } from "near-api-js";
 import { InMemoryKeyStore } from "near-api-js/lib/key_stores";
 import "reflect-metadata";
 import { Service } from "typedi";
@@ -21,6 +21,7 @@ export class Client extends DiscordClient implements BotClient {
     this.nearProvider = null;
     this.nearConfig = getConfig(process.env.NODE_ENV ?? "development");
     this.initialize();
+    this.getNearProvider();
   }
 
   public async getNearProvider(): Promise<NearProvider> {
@@ -31,10 +32,10 @@ export class Client extends DiscordClient implements BotClient {
         },
         ...this.nearConfig,
       });
-      const wallet = new WalletConnection(near, "tokenbot");
+      const account = await near.account(this.nearConfig.masterAccount);
       this.nearProvider = {
         near: near,
-        wallet: wallet,
+        account: account,
       };
     }
     return this.nearProvider;

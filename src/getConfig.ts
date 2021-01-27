@@ -8,10 +8,16 @@ export default function getConfig(env: string): any {
     case "development":
     case "production":
     case "testnet":
+      const masterAccount = process.env.ROOT_ACCOUNT_ID;
+      if (!masterAccount) {
+        throw Error("ROOT_ACCOUNT_ID environment variable not set!");
+      }
       return {
         networkId: "local",
-        nodeUrl: "http://localhost:3030",
+        nodeUrl: "https://rpc.testnet.near.org",
+        // nodeUrl: "localhost:3030",
         keyPath: keyPath,
+        masterAccount: masterAccount,
         // contractName: CONTRACT_NAME
       };
     default:
